@@ -107,6 +107,12 @@ of 'stringToBuiltinString' (since the newtype constructor vanishes), so we have 
 some obfuscation to the body to prevent it inlining.
 -}
 
+{-# INLINABLE toLabel #-}
+toLabel :: Integer -> BuiltinByteString
+-- To explain why the obfuscatedId is here
+-- See Note [noinline hack]
+toLabel n = obfuscatedId (stringToBuiltinString (Haskell.show n))
+
 -- We can't put this in `Builtins.hs`, since that force `O0` deliberately, which prevents
 -- the unfoldings from going in. So we just stick it here. Fiddly.
 instance IsString BuiltinString where

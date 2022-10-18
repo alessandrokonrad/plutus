@@ -188,6 +188,8 @@ builtinNames = [
     , 'Builtins.lessThanEqualsInteger
     , 'Builtins.equalsInteger
 
+    , Builtins.toLabel
+
     , 'Builtins.error
 
     , ''Builtins.BuiltinString
